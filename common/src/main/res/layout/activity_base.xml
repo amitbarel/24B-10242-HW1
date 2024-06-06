@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/antiflesh_white"
+    tools:context=".BaseActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/obsidian_black"
+        android:layout_marginVertical="15dp"
+        android:text="@string/title"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/LIST_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_item"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="80dp"
+        android:foregroundTint="@color/obsidian_black"
+        android:layout_below="@id/LBL_title"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/BTN_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/obsidian_black"
+        android:textColor="@color/gainsboro_white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="Add"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/BTN_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/obsidian_black"
+        android:textColor="@color/gainsboro_white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="Remove"/>
+
+
+
+</RelativeLayout>

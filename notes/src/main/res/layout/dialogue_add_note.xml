@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/TXT_noteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/TXT_noteDescription"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:minLines="1"
+        android:maxLines="5"
+        android:hint="Description" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/BTN_addNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/obsidian_black"
+        android:textColor="@color/ivory_white"
+        android:text="Save Note"/>
+
+</LinearLayout>

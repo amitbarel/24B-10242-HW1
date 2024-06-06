@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/TXT_taskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/TXT_taskDueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="1"
+        android:hint="Due Date" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/BTN_addTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/obsidian_black"
+        android:textColor="@color/ivory_white"
+        android:text="Add Task"/>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="oil_black">#0C0C0C</color>
+    <color name="obsidian_black">#0B1215</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="antiflesh_white">#FAFAFA</color>
+    <color name="ivory_white">#FFFFF0</color>
+    <color name="gainsboro_white">#C7C7C7</color>
+</resources>
