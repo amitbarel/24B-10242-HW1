@@ -12,31 +12,23 @@ public class TasksDataManager extends BaseDataManager {
 
         items.add(new ItemToStore().
                 setTitle("Task1")
-                .setDescription("24 June"));
+                .setDate("24/06/24"));
 
         items.add(new ItemToStore().
                 setTitle("Task2")
-                .setDescription("26 June"));
+                .setDate("26/06/24"));
 
         items.add(new ItemToStore().
                 setTitle("Task3")
-                .setDescription("27 June"));
+                .setDate("27/06/24"));
 
         items.add(new ItemToStore().
                 setTitle("Task4")
-                .setDescription("29 June"));
+                .setDate("29/06/24"));
 
         items.add(new ItemToStore().
                 setTitle("Task5")
-                .setDescription("1 July"));
-
-        items.add(new ItemToStore().
-                setTitle("Task6")
-                .setDescription("5 July"));
-
-        items.add(new ItemToStore().
-                setTitle("Task7")
-                .setDescription("7 July"));
+                .setDate("01/07/24"));
 
         return items;
     }

@@ -1,20 +1,25 @@
 package dev.amitb.common;
 
+import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
-import android.widget.ArrayAdapter;
+import java.util.List;
+import java.util.Objects;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class BaseActivity extends AppCompatActivity {
 
     protected BaseDataManager baseDataManager;
 
-    private MaterialTextView LBL_title;
+    private SharedPreferences sharedPreferences;
+    private List<ItemToStore> items;
+
     private ListView LIST_base;
     private MaterialButton BTN_add;
     private MaterialButton BTN_remove;
@@ -23,27 +28,44 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
         findViews();
+        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        items = baseDataManager.getItems();
 
-        ArrayList<String> items = new ArrayList<>();
-        items.add("Item 1");
-        items.add("Item 2");
-        items.add("Item 3");
-        items.add("Item 4");
-        items.add("Item 5");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        CommonAdapter adapter = new CommonAdapter(this, items);
         LIST_base.setAdapter(adapter);
 
-        initViews();
-    }
+        LIST_base.setOnItemClickListener((parent, view, position, id) ->
+                adapter.setSelectedPosition(position));
 
-    private void initViews() {
+        BTN_remove.setOnClickListener(v->adapter.removeSelectedItem());
+        BTN_add.setOnClickListener(v->{
+            Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.dialogue_add);
+            TextInputEditText ET_title = dialog.findViewById(R.id.ET_title);
+            TextInputEditText ET_description = dialog.findViewById(R.id.ET_description);
+            TextInputEditText ET_datePicker = dialog.findViewById(R.id.ET_datePicker);
+            MaterialButton saveBTN = dialog.findViewById(R.id.BTN_save);
+
+            saveBTN.setOnClickListener(v1->{
+                String title = Objects.requireNonNull(ET_title.getText()).toString();
+                String description = ET_description.getText().toString();
+                String date = ET_datePicker.getText().toString();
+
+                adapter.addItem(new ItemToStore()
+                        .setTitle(title)
+                        .setDescription(description)
+                        .setDate(date));
+                dialog.dismiss();
+            });
+
+            dialog.show();
+        });
 
     }
 
     private void findViews() {
-        LBL_title = findViewById(R.id.LBL_title);
         LIST_base = findViewById(R.id.LIST_base);
         BTN_add = findViewById(R.id.BTN_add);
         BTN_remove = findViewById(R.id.BTN_remove);

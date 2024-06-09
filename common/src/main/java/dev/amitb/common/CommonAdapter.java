@@ -1,4 +1,4 @@
-package dev.amitb.a24b_10242_hw1;
+package dev.amitb.common;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,18 +10,14 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.List;
 
-import dev.amitb.common.ItemToStore;
-
-public class TaskAdapter extends BaseAdapter {
+public class CommonAdapter extends BaseAdapter {
 
     private Context context;
     private List<ItemToStore> data;
     private LayoutInflater inflater;
     private int selectedPosition = -1;
 
-
-
-    public TaskAdapter(Context context, List<ItemToStore> data) {
+    public CommonAdapter(Context context, List<ItemToStore> data) {
         this.context = context;
         this.data = data;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -50,15 +46,16 @@ public class TaskAdapter extends BaseAdapter {
         }
 
         MaterialTextView title = rowView.findViewById(R.id.TXT_title);
-        ItemToStore task = data.get(position);
-        title.setText(task.getTitle());
+        title.setText(data.get(position).getTitle());
+        MaterialTextView description = rowView.findViewById(R.id.TXT_description);
+        description.setText(data.get(position).getDescription());
         MaterialTextView date = rowView.findViewById(R.id.TXT_when);
-        date.setText(task.getDescription());
+        date.setText(data.get(position).getDate());
 
         if (position == selectedPosition) {
             rowView.setBackgroundColor(context.getResources().getColor(android.R.color.holo_blue_light));
         }else {
-            rowView.setBackgroundColor(context.getResources().getColor(R.color.gainsboro_white));
+            rowView.setBackgroundColor(context.getResources().getColor(R.color.ivory_white));
         }
 
         return rowView;
@@ -67,10 +64,6 @@ public class TaskAdapter extends BaseAdapter {
     public void setSelectedPosition(int position) {
         this.selectedPosition = position;
         notifyDataSetChanged();
-    }
-
-    public int getSelectedPosition() {
-        return selectedPosition;
     }
 
     public void removeSelectedItem() {
