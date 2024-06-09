@@ -1,4 +1,4 @@
-package dev.amitb.a24b_10242_hw1;
+package dev.amitb.toDo;
 
 import java.util.ArrayList;
 

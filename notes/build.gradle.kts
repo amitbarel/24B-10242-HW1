@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "dev.amitb.a24b_10242_hw1"
+    namespace = "dev.amitb.notes"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dev.amitb.a24b_10242_hw1"
+        applicationId = "dev.amitb.notes"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
