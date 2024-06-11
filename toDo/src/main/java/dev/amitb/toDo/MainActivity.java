@@ -8,7 +8,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        baseDataManager = new TasksDataManager();
+        baseDataManager = new TasksDataManager(this);
         super.onCreate(savedInstanceState);
     }
 }

@@ -1,6 +1,7 @@
 package dev.amitb.common;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,10 @@ public class CommonAdapter extends BaseAdapter {
     public void setSelectedPosition(int position) {
         this.selectedPosition = position;
         notifyDataSetChanged();
+    }
+
+    public int getSelectedPosition() {
+        return selectedPosition;
     }
 
     public void removeSelectedItem() {

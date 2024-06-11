@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +16,6 @@ public class BaseActivity extends AppCompatActivity {
 
     protected BaseDataManager baseDataManager;
 
-    private SharedPreferences sharedPreferences;
     private List<ItemToStore> items;
 
     private ListView LIST_base;
@@ -30,7 +28,6 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         findViews();
-        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         items = baseDataManager.getItems();
 
         CommonAdapter adapter = new CommonAdapter(this, items);
@@ -39,7 +36,11 @@ public class BaseActivity extends AppCompatActivity {
         LIST_base.setOnItemClickListener((parent, view, position, id) ->
                 adapter.setSelectedPosition(position));
 
-        BTN_remove.setOnClickListener(v->adapter.removeSelectedItem());
+        BTN_remove.setOnClickListener(v-> {
+            BaseDataManager.sharedPreferences.removeItem(this,
+                    items.get(adapter.getSelectedPosition()));
+            adapter.removeSelectedItem();
+        });
         BTN_add.setOnClickListener(v->{
             Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.dialogue_add);
@@ -53,10 +54,13 @@ public class BaseActivity extends AppCompatActivity {
                 String description = ET_description.getText().toString();
                 String date = ET_datePicker.getText().toString();
 
-                adapter.addItem(new ItemToStore()
+                ItemToStore newItem = new ItemToStore()
                         .setTitle(title)
                         .setDescription(description)
-                        .setDate(date));
+                        .setDate(date);
+
+                adapter.addItem(newItem);
+                BaseDataManager.sharedPreferences.addItem(this, newItem);
                 dialog.dismiss();
             });
 
