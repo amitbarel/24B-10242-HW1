@@ -16,4 +16,6 @@
 Amit Barel - 318431277
 
 ## Demo
-Video is coming...
+https://github.com/amitbarel/24B-10242-HW1/assets/81353791/9f1cdb25-24e0-4f13-83c0-b3126f3ca1e9
+
+
